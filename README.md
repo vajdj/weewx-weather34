@@ -1,174 +1,427 @@
-# Weather34 skin for WeeWX
-Weather Station website skin with Live Data for WeeWX. This version is compatible with WeeWX 3.9.2 / Python 2.7 and WeeWX 4.x.x builds / Python 2.7 and Python 3.x. **Please note, some functionality will be lost if you are not using WeeWX 4.1.1 and its default extended database.** It is therefore strongly recommended that you start with an entirely new clean Python3 install of WeeWX 4.1.1.
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WeeWX Weather34 Pre-install Web Services Settings Page</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font: 18px Arial;
+            padding: 5px;
+        }
+    	div {
+            padding: 2px;
+            background-color: #00A4B4;
+            overflow: hidden;
+        }
+    	input[type=text], textarea, select {
+            font: 12px Arial;
+            width: 100%;
+            padding: 6px;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+        }
+        input[type=select]{ 
+            font: 12px Arial;
+            width: 100%;
+            cursor: pointer;
+            padding: 6px;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+        }
+        input[type=button]{ 
+            font: 12px Arial;
+            width: auto;
+            float: left;
+            cursor: pointer;
+            padding: 6px;
+        }
+        input[type=submit] {
+        background-color: #9ABA2F;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        float: left;
+        width: 100%;    
+        }
+        input[type=submit_blue] {
+        background-color: blue;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        float: left;
+        width: 100%;
+        text-align: center;
+        }
+        label[for=text]{ 
+            font: 12px Arial;
+            text-align: right;
+            width: 100%;
+            float: left;
+            cursor: pointer;
+            padding: 6px;
+        }
+        .container {
+            border-radius: 5px;
+            border: 2px solid rgba(86,95,103,1);    
+            background-color: #959595;
+            padding: 5px;
+        }
+        .col-25 {
+        float: left;
+        width: 25%;
+        margin-top: 6px;
+        }
+
+        .col-75 {
+        float: left;
+        width: 75%;
+        margin-top: 6px;
+        }
+
+/* Clear floats after the columns */
+        .row:after {
+        content: "";
+        display: table;
+        clear: both;
+        }
+        /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+        @media screen and (max-width: 600px) {
+        .col-25, .col-75, input[type=submit] {
+        width: 100%;
+        margin-top: 0;
+        }
+        .center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+        }    
+        
+    </style>
+</head>
+<body>
+    <img src="www/img/icon-weewx.svg" alt="WeeWX" title="WeeWX"  width="300px" height="120px class="center" ><img src="www/img/weather34logo.svg" width="120px" alt="https://weather34.com/homeweatherstation/" class="homeweatherstationlogo" >
+    <p>Weather34 for WeeWX. Pre-install settings page, generating services.txt prior to installation. The files will be automatically sent to your defaults Downloads folder. No data is retained on this server after the process is complete.</p>
+
+<div class="container">
+  
+    <div class="row">
+      <div class="col-25">
+        <label for="text">Latitude</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="txtLat" placeholder="Enter your Latitude">
+      </div>
+    </div>
+        <div class="row">
+      <div class="col-25">
+        <label for="text">Longitude</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="txtLon" placeholder="Enter your Longitude">
+      </div>
+    </div>
+        <div class="row">
+      <div class="col-25">
+        <label for="text">Language</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="txtLang" placeholder="Enter your Language">
+      </div>
+    </div>
+        <div class="row">
+      <div class="col-25">
+            <label for="text">AQI Key</label>
+            </div>    
+        <div class="col-75">
+            
+            <input type="text" id="txtAqkey" placeholder="Enter your AQI Key" />
+        </div>
+    </div>
+        <div class="row">
+      <div class="col-25">
+            <label for="text">DarkSky Key</label>
+            </div>    
+        <div class="col-75">
+            
+            <input type="text" id="txtDskey" placeholder="Enter your DarkSky Key" />
+        </div>
+        </div>
+        <div class="row">
+      <div class="col-25">
+            <label for="text">DarkSky Units</label>
+            </div>    
+        <div class="col-75">
+            
+            <select id="selDsunits">
+                <option selected value="">-- Choose the units --</option>
+                <option value="us">US</option>
+                <option value="si">SI Metric</option>
+                <option value="ca">Canada</option>
+                <option value="uk2">UK (Metric with mph and miles)</option>
+                <option value="auto">auto</option>                   
+            </select> 
+        </div>
+        </div>
+        <div class="row">
+      <div class="col-25">
+            <label for="text">Weather Underground Key</label>
+            </div>    
+        <div class="col-75">
+            
+            <input type="text" id="txtWukey" placeholder="Enter your Weather Underground Key" />
+        </div>
+        </div>
+        <div class="row">
+      <div class="col-25">
+            <label for="text">Weather Underground Units</label>
+            </div>    
+        <div class="col-75">
+            
+            <select id="selWuunits">
+                <option selected value="">-- Choose the units --</option>
+                <option value="e">Imperial</option>
+                <option value="m">Metric</option>
+                <option value="s">Scandinavia</option>
+                <option value="h">United Kingdom</option>
+            </select>
+        </div>
+        </div>
+        <div class="row">
+      <div class="col-25">
+            <label for="text">METAR Key</label>
+            </div>    
+        <div class="col-75">
+            
+            <input type="text" id="txtMekey" placeholder="Enter your METAR Key" />
+        </div>
+        </div>
+        <div class="row">
+      <div class="col-25">
+            <label for="text">METAR Code</label>
+            </div>    
+        <div class="col-75">
+            
+            <input type="text" id="txtMecode" placeholder="Enter your METAR Code" />
+        </div>
+        </div>
+        <div class="row">
+      <div class="col-25">
+            <label for="text">PurpleAir ID</label>
+            </div>    
+        <div class="col-75">
+            
+            <input type="text" id="txtPuid" placeholder="Enter your PurpleAir ID" />
+        </div>
+        </div>
+        <div class="row">
+      <div class="col-25">
+            <label for="text">Local Web Server IP Address</label>
+            </div>    
+        <div class="col-75">
+            
+            <input type="text" id="txtAlip" placeholder="Enter Local Web Server IP Address" />
+        </div>
+        </div>
+        <div class="row">
+      <div class="col-25">
+            <label for="text">Meteoalarm Country</label>
+            </div>    
+        <div class="col-75">
+            
+            <input type="text" id="txtAlcountry" placeholder="Enter your Meteoalarm Country (European users only)" />
+        </div>
+        </div>
+        <div class="row">
+      <div class="col-25">
+            <label for="text">Meteoalarm Region</label>
+            </div>    
+        <div class="col-75">
+            
+            <input type="text" id="txtAlregion" placeholder="Enter your Meteoalarm Region (European users only)" />
+        </div>
+        </div>
+        <div class="row">
+      <div class="col-25">
+            <label for="text">Active Web Services Code String</label>
+            </div>    
+        <div class="col-75">
+            
+            <input type="text" id="txtServices" placeholder="Enter your Active Web Services Code String (Minimum requirement me.wu.eq.ki)" />
+        </div>
+        </div>
+        <div class="row">
+      <div class="col-25">
+            <label for="text">Enable Cloud Cover</label>
+            </div>    
+        <div class="col-75">
+            
+            <select id="selCloud">
+                <option selected value="">-- Choose True or False --</option>
+                <option value="True">True</option>
+                <option value="False">False</option>                   
+            </select>
+        </div>
+        </div>
+        <div class="row">
+      <div class="col-25">
+            <label for="text">Land Mass</label>
+            </div>
+            
+        <div class="col-75">
+            
+            <select id="selContinent">
+                <option selected value="">-- Choose Land Mass --</option>
+                <option value="eu">Europe</option>
+                <option value="af">Africa, Middle East</option>
+                <option value="ana">North America</option>
+                <option value="ama">Central America</option>
+                <option value="asa">South America</option>
+                <option value="seasia">South East Asia</option>
+                <option value="oce">Oceania</option>
+            </select>
+        </div>
+            </div>
+        <div>
+            <input type="submit" id="bt" value="Create and Download services.txt" onclick="saveFile()" />
+        </div>
+            </div>
+
+    
+</body>
+<script>
+    let saveFile = () => {
+    	
+        // Get the data from each element on the form.
+    	const lat = document.getElementById('txtLat');
+        const lon = document.getElementById('txtLon');
+        const lang = document.getElementById('txtLang');
+        const continent = document.getElementById('selContinent');
+        const aq_apikey = document.getElementById('txtAqkey');
+        const ds_apikey = document.getElementById('txtDskey');
+        const ds_units = document.getElementById('selDsunits');
+        const wu_apikey = document.getElementById('txtWukey');
+        const wu_units = document.getElementById('selWuunits');
+        const me_apikey = document.getElementById('txtMekey');
+        const me_code = document.getElementById('txtMecode');
+        const pu_id = document.getElementById('txtPuid');
+        const al_ip = document.getElementById('txtAlip');
+        const al_country = document.getElementById('txtAlcountry');
+        const al_region = document.getElementById('txtAlregion');
+        const services = document.getElementById('txtServices');
+        const enable = document.getElementById('selCloud');
+        
+        // This variable stores all the data.
+        let data = 
+            '\r {' + ' \r\n ' +
+            '"##'+'Start of user fields' +'",'+ ' \r\n ' +
+            '"' + 'lat'+'"' + ':' +"'" + lat.value +"',"+ ' \r\n ' +
+            '"' + 'lon'+'"' + ':' +"'"  +lon.value +"'," + ' \r\n ' + 
+            '"' + 'lang'+'"' + ':' +"'"  + lang.value +"'," + ' \r\n ' +  
+            '"' + 'continent'+'"' + ':' +"'"  + continent.value +"'," + ' \r\n ' +
+            '"' + 'aq_apikey'+'"' + ':' +"'"  + aq_apikey.value +"'," + ' \r\n ' +
+            '"' + 'ds_apikey'+'"' + ':' +"'"  + ds_apikey.value +"'," + ' \r\n ' +
+            '"' + 'ds_units'+'"' + ':' +"'"  + ds_units.value +"'," + ' \r\n ' +
+            '"' + 'wu_apikey'+'"' + ':' +"'"  + wu_apikey.value +"'," + ' \r\n ' +
+            '"' + 'wu_units'+'"' + ':' +"'"  + wu_units.value +"'," + ' \r\n ' +
+            '"' + 'me_apikey'+'"' + ':' +"'"  + me_apikey.value +"'," + ' \r\n ' +
+            '"' + 'me_code'+'"' + ':' +"'"  + me_code.value +"'," + ' \r\n ' +
+            '"' + 'pu_id'+'"' + ':' +"'"  + pu_id.value +"'," + ' \r\n ' +
+            '"' + 'al_ip'+'"' + ':' +"'"  + al_ip.value +"'," + ' \r\n ' +
+            '"' + 'al_country'+'"' + ':' +"'"  + al_country.value +"'," + ' \r\n ' +
+            '"' + 'al_region'+'"' + ':' +"'"  + al_region.value +"'," + ' \r\n ' +
+            '"##'+'List of all user fields above to be replaced in strings below' +'",'+ ' \r\n ' +
+            '"sub_fields"'+':'+"'lat,lon,lang,continent,aq_apikey,ds_apikey,ds_units,wu_apikey,wu_units,me_apikey,me_code,pu_id,al_ip,al_country,al_region'," + ' \r\n ' +
+            '"config_entries3"'+':'+"'''="+ ' \r\n ' +
+            "'Weather34WebServices' "+':'+ ' \r\n ' +
+            '"# Air quality, your own latitude, longitude, token and interval in seconds are required\\n"' + ' \r\n ' +
+            '"# Dark Sky, your own latitude, longitude, API key, language, units and interval in seconds required\\n"' + ' \r\n ' +
+            '"# DarkSky Units key us = US Units, ca = METRIC Units, si = METRICWX Units, uk2 = UK(metric with mph) Units\\n"' + ' \r\n ' +
+            '"# Example https://api.forecast.io/forecast/yourtokenhere/51.94,-0.987?lang=en&units=uk2\\n"' + ' \r\n ' +
+            '"# Weather Underground, your own latitude, longitude, API key, language, units and interval in seconds required\\n"' + ' \r\n ' +
+            '"# Weather Underground Units key e = US, m = METRIC, s = SI(with m/s Scandinavia), h = UK(with mph)\\n"' + ' \r\n ' +
+            '"# Example https://api.weather.com/v3/wx/forecast/daily/5day?geocode=51.94,-0.987&language=en&format=json&units=h&apiKey=yourapikeyhere\\n"' + ' \r\n ' +
+            '"# Earthquake reports interval in seconds required\\n"' + ' \r\n ' +
+            '"# K-Index reports interval in seconds required\\n"' + ' \r\n ' +
+            '"# Metar reports airport code, API Key and interval in seconds required\\n"' + ' \r\n ' +
+            '"# Example https://api.checkwx.com/metar/EGTK/decoded\\n"' + ' \r\n ' +
+            '"# Example X-API-Key:yourapikeyhere\\n"' + ' \r\n ' +
+            '"# Purpleair reports device ID and interval in seconds required\\n"' + ' \r\n ' +
+            '"# Example https://www.purpleair.com/json?show=38365\\n"' + ' \r\n ' +
+            '"# Meteoalrm European weather warnings country code, region code and interval in seconds required\\n"' + ' \r\n ' +
+            '"# Example http://192.168.1.232/weewx/weather34/eualert.php?country=UK&region=013\\n"' + ' \r\n ' +
+            '"# Select the services you require by creating a string of the services above\\n"' + ' \r\n ' +
+            '"# Example services = ds.me.eq.ki.wu.aq.al.ah.ao.aa.pu\\n"' + ' \r\n ' +
+            '"# Select your prefered time interval in seconds for each service\\n"' + ' \r\n ' +
+             '{' + ' \r\n ' +
+            "   'aq_url':'https://api.waqi.info/feed/geo:"+lat.value+';'+lon.value+'/?token='+aq_apikey.value+"'"+','+ ' \r\n ' +
+            "   'aq_interval':'3600'"+','+ ' \r\n ' +
+            "   'aq_filename':'/var/www/html/weewx/weather34/jsondata/aqi.txt'"+','+ ' \r\n ' +
+            "   'ds_url':'https://api.forecast.io/forecast/"+ds_apikey.value+'/'+lat.value+','+lon.value+'?lang='+lang.value+'&units'+'='+ds_units.value+"'"+','+ ' \r\n ' +
+            "   'ds_interval':'3600'"+','+ ' \r\n ' +
+            "   'ds_filename':'/var/www/html/weewx/weather34/jsondata/darksky.txt'"+','+ ' \r\n ' +
+            "   'wu_url':'https://api.weather.com/v3/wx/forecast/daily/5day?geocode="+lat.value+','+lon.value+'&language='+lang.value+'&format=json&units='+wu_units.value+'&apiKey='+wu_apikey.value+"'"+','+ ' \r\n ' +
+            "   'wu_interval':'3600'"+','+ ' \r\n ' +
+            "   'wu_filename':'/var/www/html/weewx/weather34/jsondata/wuforecast.txt'"+','+ ' \r\n ' +
+            "   'eq_url':'https://earthquake-report.com/feeds/recent-eq?json'"+','+ ' \r\n ' +
+            "   'eq_interval':'3600'"+','+ ' \r\n ' +
+            "   'eq_filename':'/var/www/html/weewx/weather34/jsondata/eqnotification.txt'"+','+ ' \r\n ' +
+            "   'ki_url':'https://services.swpc.noaa.gov/products/geospace/planetary-k-index-dst.json'"+','+ ' \r\n ' +
+            "   'ki_interval':'43200'"+','+ ' \r\n ' +
+            "   'ki_filename':'/var/www/html/weewx/weather34/jsondata/kindex.txt'"+','+ ' \r\n ' +
+            "   'me_url':'https://api.checkwx.com/metar/"+me_code.value+'/decoded'+"',"+ ' \r\n ' +
+            "   'me_header':'X-API-Key:"+me_apikey.value+"'"+','+ ' \r\n ' +
+            "   'me_interval':'3600'"+','+ ' \r\n ' +
+            "   'me_filename':'/var/www/html/weewx/weather34/jsondata/metar34.txt'"+','+ ' \r\n ' +
+            "   'pu_url':'https://www.purpleair.com/json?show="+pu_id.value+"'"+','+ ' \r\n ' +
+            "   'pu_interval':'3600'"+','+ ' \r\n ' +
+            "   'pu_filename':'/var/www/html/weewx/weather34/jsondata/purpleair.txt'"+','+ ' \r\n ' +
+            "   'al_url':'http://"+al_ip.value+'/weewx/weather34/eualert.php?country='+al_country.value+'&region='+al_region.value+"'"+','+ ' \r\n ' +
+            "   'al_interval':'3600'"+','+ ' \r\n ' +
+            "   'al_filename':'/var/www/html/weewx/weather34/jsondata/meteoalarm.txt'"+','+ ' \r\n ' +
+            "   'services':'"+services.value+"'"+ ' \r\n ' +
+            "       }'''"+','+ ' \r\n ' +
+            '"config_entries4"'+":'''="+ ' \r\n ' +
+            "'Weather34CloudCover' :"+ ' \r\n ' +
+            '"# Apply your own latitude and longitude and continent to the URLs in this section\\n"' + ' \r\n ' +
+            '{' + ' \r\n ' +
+            "   'enable':'"+enable.value+"'"+','+ ' \r\n ' +
+            "   'db_field':'signal8'"+','+ ' \r\n ' +
+            "   'cc_interval':'300'"+','+ ' \r\n ' +
+            "   'cc1_url':'https://api.sat24.com/crop?type=visual5hdcomplete&lat="+lat.value+'&lon='+lon.value+'&width=300&height=300&zoom=1.00&continent='+continent.value+"'"+','+ ' \r\n ' +
+            "   'cc1_filename':'/tmp/sat1.png'"+','+ ' \r\n ' +
+            "   'cc2_url':'https://api.sat24.com/crop?type=infraPolair&lat="+lat.value+'&lon='+lon.value+'&width=300&height=300&zoom=1.00&continent='+continent.value+"'"+','+ ' \r\n ' +
+            "   'cc2_filename':'/tmp/sat2.png'"+','+ ' \r\n ' +
+            "       }'''"+','+ ' \r\n ' +
+            
+        
+        '}'
+            
+        
+        
+        
+        // Convert the text to BLOB.
+        const textToBLOB = new Blob([data], { type: 'text/plain' });
+        const sFileName = 'services.txt';	   // The file to save the data.
+
+        let newLink = document.createElement("a");
+        newLink.download = sFileName;
+
+        if (window.webkitURL != null) {
+            newLink.href = window.webkitURL.createObjectURL(textToBLOB);
+        }
+        else {
+            newLink.href = window.URL.createObjectURL(textToBLOB);
+            newLink.style.display = "none";
+            document.body.appendChild(newLink);
+        }
+
+        newLink.click(); 
+    }
+</script>
+</html>
 
-Version W34-HC-IMJD-3.0.0
-
-Packaged for installation using its own unique installer and an online pre-installation settings form https://steepleian.github.io/weewx-Weather34/pre_install_services.html
-
-This repository contains the WeeWX version of Brian Underdown's Weather34 website template set. Brian's main website is https://weather34.com/homeweatherstation/index.html In January, 2019, Brian asked others to take over the distribution/maintainence of his design whilst he concentrated on development only for MB NanoSD, called Weather34 MB-SMART. This WeeWX version of the template is actively developed by Ian Millard and Jerry Dietrich.
-
-This version requires WeeWX version 4.1.1 or later software. WeeWX is available at http://weewx.com
-
-This version is designed explicitly to harness the powerful WeeWX database to generate the weather data charts and statistical data. It was originally built on the current MB-UB40-IHVN which is now maintained by Lightmaster (Meteobridge-Weather34-Template). Although we maintain a similar look and feel with MB-UB40-IHVN,the weewx-Weather34 now has many unique features.
-
-This version is assembled as an install package and uses its own unique utility, w34_installer.py, to install. This greatly simplifies the installation process from that of previous versions. Depending on your own WeeWX setup, minor edits may be required to be made to weewx.conf and Weather34 skin.conf files. Please see the Weather34 skin Installation Guide for detailed instructions.
-
-# What's New in this Version W34-HC-IMJD-3.0.0
-
-To improve efficiency and reliability the web services (forecasts and alerts etc) are now part of the weather34.py module coding and the settings for these have been moved from the template setup page to weewx.conf. This is also true for cloud coverage settings. To assist you we have created a new pre-install settings page at https://steepleian.github.io/weewx-Weather34/. When you have completed the settings form a file 'services.txt' is automatically downloaded to your default Download folder. This file should then be copied to your install folder prior to running the unique installer. When the install process is exectuted, the data contained in services.txt is used to populate weewx.conf
-
-# Demo
-
-A live example of Weather34 WeeWX skin can be seen at https://claydonsweather.org.uk
-
-# Weather34 Historic Timeline of design 2014-2019 
-https://weather34.com/homeweatherstation/weather34timeline/weather34timeline.html
-
-# Template Screenshots
-
-**Dark Theme**
-
-![image](https://user-images.githubusercontent.com/18438654/86633765-fb60a200-bfc8-11ea-99dc-f8dc8de56e8c.png)
-
-**Light Theme**
-
-![image](https://user-images.githubusercontent.com/18438654/86635273-c8b7a900-bfca-11ea-9efd-76962364c2fd.png)
-
-**Pop Up Chart - Dark Theme**
-
-![image](https://user-images.githubusercontent.com/18438654/86635575-277d2280-bfcb-11ea-9452-e7acd7f44e62.png)
-
-**Pop Up Chart - Light Theme
-
-![image](https://user-images.githubusercontent.com/18438654/86636143-dae61700-bfcb-11ea-966d-4db7b487033f.png)
-
-**Pop Up AQI Info**
-
-![image](https://user-images.githubusercontent.com/18438654/86636425-2c8ea180-bfcc-11ea-957d-72c1180f44fb.png)
-
-**Pop UP Alerts**
-
-![image](https://user-images.githubusercontent.com/18438654/86637661-da4e8000-bfcd-11ea-8df6-1f872a6bb6ed.png)
-
-**Radial Charts**
-
-![Untitled](https://user-images.githubusercontent.com/18438654/86875356-34d50280-c0da-11ea-9b39-33acd451eb46.png)
-
-**Hays Charts**
-
-![image](https://user-images.githubusercontent.com/18438654/86639506-e25bef00-bfd0-11ea-9da3-043d2a640b46.png)
-
-
-# Setup
-
-**If you are upgrading from a previous version of this skin, due to the significant changes, you must recreate your settings!.php file by running the full install process. Just copying your previous settings1.php will cause errors which are then difficult to resolve.**
-
-Follow the instructions in the 'installation guide' (INSTALLATION_GUIDE.md) to install the template.
-Browse to http://your/path/to/weewx/weather34/easyW34skinSetup.php
-There is no initial password when the page prompts the first time -- just press LOGIN to enter the page.
-IMPORTANT set a password in the screen for future use -- your browser can remember it. This will make future updates    reasonably secure so only you can do the updates to the configuration.
-Make setting entries in the easyweathersetup.php page and SAVE. The next time you run it, use the password you set in the step above.
-Repeat running easyW34skinSetup.php until the main screen appears as you like it.
-
-# License
-
-Copyright (c) 2016-2019 by Brian Underdown (https://weather34.com)
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Template”), to deal in the Template without restriction, including without limitation the rights to, can use, can not copy without prior permission, can modify for personal use, can use and publish for personal use ,can not distribute without prior permission, can not sublicense without prior permission, and can not sell copies of the Template, and subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Template.
-
-THE TEMPLATE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON INFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE TEMPLATE OR THE USE OR OTHER DEALINGS IN THE TEMPLATE.
-
-Attribution-NonCommercial 4.0 International based on a work at https://weather34.com/homeweatherstation
-Non-weeWX versions Available
-
-# An Excerpt from Meteobridge-Weather34-Template MB-UB40-RRW README.md
-Github repository for the Meteobridge version of the original weather34 template 
-Weather Template for Meteobridge users only 
-
-# This work is not permitted to be used in any other versions without prior permission unless listed below 
-# Permission is granted for use in Cumulus version maintained by Ken True 
-# Permission is granted for use in Weewx version maintained by Ian Millard
-
-*This work means CSS/SVG/PHP .
-
-Meteobridge Version available via download maintained by Lightmaster (https://github.com/lightmaster/Meteobridge-Weather34-Template)
-
-Cumulus Version available via download and more info supported by Ken True ( https://github.com/ktrue/CU-HWS ). This version now also supports WeeWX and WeatherCat
-
-# Credits for this version
-
-Apart from Brian Underdown without him, this template would never exist, I would aslo like to acknowledge the following people: -
-
-Jerry Dietrich for his massive contribution in converting my wild ideas into reality, putting me straight on my mediocre coding skills and having the patience of a dozen saints.
-
-Gary Roderick for his original coding of Highcharts for WeeWX.
-
-William Bailey aka Lightmaster who maitains the MB version of Weather34. Incredibly helpful and always on the end of Telegram when I need a chat, night or day.
-
-Ken True for sharing files and who makes my job of maintaining the WeeWX version so much easier.
-
-Thomas Sosio for his invaluable contribution in producing the Meteobridge lookup code to translate WeeWX database output.
-
-David Marshall for contributing technical knowledge and solutions to create some original .tmpl files and alternative solutions for weather alerts.
-
-Taylormia for contributing his excellent setup example for instances where WeeWX and server/template are remote to each other.
-
-Gary Portellas for a helpful suggestion to further simplify the installation process.
-
-Drealine for his recent work on extending the French translations.
-
-All those unamed people who have helped me with testing updates.
-
-The creators of WeeWX without which there would be no point.
-
-# Alternative versions
-
-# Meteobridge
-you can find the Meteobridge version maintained by Lightmaster (William) at 
-https://github.com/weather34/Meteobridge-Weather34-Template34/
-
-# Cumulus
-you can find the Cumulus version maintained by Ken True (Saratoga) at 
-https://github.com/ktrue/CU-HWS
-
-# Weewx
-you can find a Weewx version maintained by Ian Millard is also avaialble via 
-https://github.com/steepleian/weewx-Weather34
-
-# Weatherflow
-you can find a Weatherflow version not maintained but fully tested as of May 5th 2019 
-https://github.com/weather34/Weather34-Weatherflow
-
-
-# This work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License.
-http://creativecommons.org/licenses/by-nc-nd/4.0/
-
-# Credits and thanks to the contributors who made the original version of Weather34 possible between 2015 and 2019.
-
- Erik M Madsen for language idea and initial script
- 
- Paul @komoka weather in Canada for continous support and testing 
- 
- Josep for Spanish/Catalan language translation and for many ideas and refinements
- 
- Pascal Catte French translation and ideas fowarded 
- 
- Steve the developer of Cumulus for support and providing a platform to resolve issues 
- 
- Mats Ahlklo Swedish translation and his work on using Davis weatherlink 
- 
- Betejuice (Cumulus Forum) for providing a solution for meteor shower listings 
- 
- Ken True (Saratoga) for kindly granting permission allowing use of many scripts he developed which gave inspiration and ideas  though not used today it was the inspiration that allowed to do something more suited to the design. 
- 
- Eric Rechlin Special thanks for originally creating the theme switching and extensive work on metrics/non metrics
- 
- Boris at smartbedded (meteobridge) for ongoing support and upkeep of meteobridge 
- 
- Wim van der Kuil for the original meteobridge script 
- 
- David St John at weatherflow for providing hardware for testing and his non bias logical views 
- 
- Paul Wilman , Tina Thomas, Vaggos , Chuck M , Aaron Gersztoff , Ian Millard, and many many more for continous constructive supportive feedback .. 
