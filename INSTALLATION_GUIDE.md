@@ -31,7 +31,7 @@ Once completed, make sure you save weewx.conf
 
 * The default WeeWX extension installer (wee_extension) was not really intended to deal with monolithic structure of the Weather34 skin. It is possible to configure an install package to use wee_extension, but it is a difficult and tedious process to maintain for this skin. I am very gratefully to Jerry Dietrich for writing a new installer specially for Weather34. This installer copies everything to the correct places and automatically configures the correct web server ownerships, permissions and groups etc. The whole process is very fast and your skin will be up and running without having to wait till the end of the first archive cycle. By using the supplied configuration files, setup.py, packaged or MacOS installed versions of WeeWX can be catered for.
 
-* Go to https://steepleian.github.io/weewx-Weather34/ to complete the pre-install web services settings which which generates 'services.txt' in your default Download folder
+* Go to https://steepleian.github.io/weewx-Weather34/pre_install_services.html to complete the pre-install web services settings which which generates 'services.txt' in your default Download folder
 
 * From the command line: - 
                 
