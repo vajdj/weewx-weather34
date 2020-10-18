@@ -1,0 +1,93 @@
+{
+"##Start of user fields
+"lat":'',
+"lon":'',
+"lang":'',
+"continent":'',
+"aq_apikey":'',
+"ds_apikey":'',
+"ds_units":'',
+"wu_apikey":'',
+"wu_units":'',
+"me_apikey":'',
+"me_code":'',
+"pu_id":'',
+"al_ip":'',
+"al_country":'',
+"al_region":'',
+"myaerisid":'',
+"myaerissecret":'',
+"##List of all user fields above to be replaced in strings below",
+"sub_fields":'lat,lon,lang,continent,aq_apikey,ds_apikey,ds_units,wu_apikey,wu_units,me_apikey,me_code,pu_id,al_ip,al_country,al_region,myaerisid,myaerissecret',
+"config_entries3":'''=
+'Weather34WebServices' :
+"# Air quality, your own latitude, longitude, token and interval in seconds are required\n"
+"# Example https://api.waqi.info/feed/geo:51.940;-0.987/?token=yourtokenhere\n"
+"# Dark Sky, your own latitude, longitude, API key, language, units and interval in seconds required\n"
+"# DarkSky Units key us = US Units, ca = METRIC Units, si = METRICWX Units, uk2 = UK(metric with mph) Units\n"
+"# Example https://api.forecast.io/forecast/yourtokenhere/51.94,-0.987?lang=en&units=uk2\n"
+"# Weather Underground, your own latitude, longitude, API key, language, units and interval in seconds required\n"
+"# Weather Underground Units key e = US, m = METRIC, s = SI(with m/s Scandinavia), h = UK(with mph)\n"
+"# Example https://api.weather.com/v3/wx/forecast/daily/5day?geocode=51.94,-0.987&language=en&format=json&units=h&apiKey=yourapikeyhere\n"
+"# Earthquake reports interval in seconds required\n"
+"# K-Index reports interval in seconds required\n"
+"# Metar reports airport code, API Key and interval in seconds required\n"
+"# Example https://api.checkwx.com/metar/EGTK/decoded\n"
+"# Example X-API-Key:yourapikeyhere\n"
+"# Purpleair reports device ID and interval in seconds required\n"
+"# Example https://www.purpleair.com/json?show=38365\n"
+"# Meteoalrm European weather warnings country code, region code and interval in seconds required\n"
+"# Example http://192.168.1.232/weewx/weather34/eualert.php?country=UK&region=013\n"
+"# Example Aeris Weather Alerts https://api.aerisapi.com/alerts/51.00,1.00?client_id=ABC1234XYZ789&client_secret=MaNfRoMuNcLe123456\n"
+"# Select the services you require by creating a string of the services above\n"
+"# Example services = ds.me.eq.ki.wu.aq.al.ah.ao.aa.pu\n"
+"# Select your prefered time interval in seconds for each service\n"
+ {
+    'aq_url':'https://api.waqi.info/feed/geo:$lat;$lon/?token=$aq_api_key',
+    'aq_interval':'3600',
+    'aq_filename':'/var/www/html/weewx/weather34/jsondata/aqi.txt',
+    'ds_url':'https://api.forecast.io/forecast/$ds_apikey/$lat,$lon?lang=$lang&units=$ds_units',
+    'ds_interval':'3600',
+    'ds_filename':'/var/www/html/weewx/weather34/jsondata/darksky.txt',
+    'wu_url':'https://api.weather.com/v3/wx/forecast/daily/5day?geocode=$lat,$lon&language=$lang&format=json&units=$wu_units&apiKey=$wu_apikey',
+    'wu_interval':'3600',
+    'wu_filename':'/var/www/html/weewx/weather34/jsondata/wuforecast.txt',
+    'eq_url':'https://earthquake-report.com/feeds/recent-eq?json',
+    'eq_interval':'3600',
+    'eq_filename':'/var/www/html/weewx/weather34/jsondata/eqnotification.txt',
+    'ki_url':'https://services.swpc.noaa.gov/products/geospace/planetary-k-index-dst.json',
+    'ki_interval':'43200',
+    'ki_filename':'/var/www/html/weewx/weather34/jsondata/kindex.txt',
+    'me_url':'https://api.checkwx.com/metar/$me_code/decoded',
+    'me_header':'X-API-Key:$me_apikey',
+    'me_interval':'3600',
+    'me_filename':'/var/www/html/weewx/weather34/jsondata/metar34.txt',
+    'pu_url':'https://www.purpleair.com/json?show=$pu_id',
+    'pu_interval':'3600',
+    'pu_filename':'/var/www/html/weewx/weather34/jsondata/purpleair.txt',
+    'al_url':'http://$al_ip/weewx/weather34/eualert.php?country=$al_country&region=$al_region',
+    'al_interval':'3600',
+    'al_filename':'/var/www/html/weewx/weather34/jsondata/meteoalarm.txt',
+    'aa_url':'https://api.aerisapi.com/alerts/$lat,$lon?client_id=$myaerisid&client_secret=$myaerissecret',
+    'aa_interval':'3600',
+    'aa_filename':'/var/www/html/weewx/weather34/jsondata/aerisalerts.txt',
+    'ah_url':'https://api.aerisapi.com/forecasts/$lat,$lon?&format=json&filter=1hr&limit=10&fields=periods.dateTimeISO,loc,periods.maxTempC,periods.minTempC,periods.pop,periods.precipMM,periods.maxHumidity,periods.windDirMax,periods.windSpeedMaxKPH,periods.weather&client_id=$myaerisid&client_secret=$myaerissecret',
+    'ah_filename':'/var/www/html/weewx/weather34/jsondata/aerishour.txt',
+    'ao_url':'https://api.aerisapi.com/forecasts/$lat,$lon?&format=json&filter=daynight&limit=10&client_id=$myaerisid&client_secret=$myaerissecret',
+    'ao_interval':'3600',
+    'ao_filename':'/var/www/html/weewx/weather34/jsondata/aerisoutlook.txt',
+    'services':'eq.ki'			
+		}''',
+"config_entries4":'''=
+'Weather34CloudCover' : 
+"# Apply your own latitude and longitude and continent to the URLs in this section\n"
+{
+    'enable':'True',
+    'db_field':'signal8',
+    'cc_interval':'300',
+    'cc1_url':'https://api.sat24.com/crop?type=visual5hdcomplete&lat=$lat&lon=$lon&width=300&height=300&zoom=1.00&continent=$continent',
+    'cc1_filename':'/tmp/sat1.png',
+    'cc2_url':'https://api.sat24.com/crop?type=infraPolair&lat=$lat&lon=$lon&width=300&height=300&zoom=1.00&continent=$continent',
+    'cc2_filename':'/tmp/sat2.png'
+            }''',
+}
