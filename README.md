@@ -15,6 +15,8 @@ This version is assembled as an install package and uses its own unique utility,
 
 # What's New in this Version W34-HC-IMJD-3.0.0
 
+**Please Note.** The appearance and features of this new version are identical to those of the previous version (W34-HC-IMJD-2.0.0). The new changes relate to moving some of the settings from the skin's PHP coding into its core Python Module, weather34.py. If your are currently using W34-HC-IMJD-2.0.0 and you are happy that you have a stable setup, it is not not absolutely necessary to upgrade.
+
 To improve efficiency and reliability the web services (forecasts and alerts etc) are now part of the weather34.py module coding and the settings for these have been moved from the template setup page to weewx.conf. This is also true for cloud coverage settings. To assist you we have created a new pre-install settings page at https://steepleian.github.io/weewx-Weather34/. When you have completed the settings form a file 'services.txt' is automatically downloaded to your default Download folder. This file should then be copied to your install folder prior to running the unique installer. When the install process is exectuted, the data contained in services.txt is used to populate weewx.conf
 
 # Demo
