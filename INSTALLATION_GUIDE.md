@@ -8,7 +8,7 @@ If you have not already done so, you must update your WeeWX installation to vers
 
 If you are carrying out a fresh install of WeeWX, my own personal preference is to use the setup.py method (http://www.weewx.com/docs/setup.htm). However, this increases the chances of requiring more path edits in the configuration files. Alternatively use one of the dedicated packaged installs (http://weewx.com/docs/debian.htm, http://weewx.com/docs/redhat.htm, http://weewx.com/docs/suse.htm or http://weewx.com/docs/macos.htm).
 
-* Please familiarise yourself with the location of your WeeWX system files inhttp://weewx.com/docs/cluding your bin/user folder, skins folder and weewx.conf file. If you are unsure where to find these, please refer to the installation processes here: - https://claydonsweather.org.uk/weewx/docs/ which shows various WeeWX installation scenarios.
+* Please familiarise yourself with the location of your WeeWX system files in http://weewx.com/docs/ including your bin/user folder, skins folder and weewx.conf file. If you are unsure where to find these, please refer to the installation processes here: - https://claydonsweather.org.uk/weewx/docs/ which shows various WeeWX installation scenarios.
 
 IMPORTANT. Installing PHP; please make sure you install all the PHP modules appropriate for your version of PHP. Failure to due so may mean that forecasts and current conditions fail to update. This is an example for PHP7.3 modules on a Debian based distribution: -
 
