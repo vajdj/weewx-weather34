@@ -9,13 +9,13 @@ This repository contains the WeeWX version of Brian Underdown's Weather34 websit
 
 This version requires WeeWX version 4.1.1 or later software. WeeWX is available at http://weewx.com
 
-This version is designed explicitly to harness the powerful WeeWX database to generate the weather data charts and statistical data. It was originally built on the current MB-UB40-IHVN which is now maintained by Lightmaster (Meteobridge-Weather34-Template). Although we maintain a similar look and feel with MB-UB40-IHVN,the weewx-Weather34 now has many unique features.
+This version is designed explicitly to harness the powerful WeeWX database to generate the weather data charts and statistical data. It was originally built on the current MB-UB40-IHVN which is now maintained by Lightmaster (Meteobridge-Weather34-Template). Although we maintain a similar look and feel with MB-UB40-IHVN, the weewx-Weather34 version now has many unique features.
 
 This version is assembled as an install package and uses its own unique utility, w34_installer.py, to install. This greatly simplifies the installation process from that of previous versions. Depending on your own WeeWX setup, minor edits may be required to be made to weewx.conf and Weather34 skin.conf files. Please see the Weather34 skin Installation Guide for detailed instructions.
 
 # What's New in this Version W34-HC-IMJD-3.0.0
 
-**Please Note.** The appearance and features of this new version are identical to those of the previous version (W34-HC-IMJD-2.0.0). The new changes relate to moving some of the settings from the skin's PHP coding into its core Python Module, weather34.py. If your are currently using W34-HC-IMJD-2.0.0 and you are happy that you have a stable setup, it is not not absolutely necessary to upgrade.
+**Please Note.** The appearance and features of this new version are identical to those of the previous version (W34-HC-IMJD-2.0.0). The new changes relate to moving some of the settings from the skin's PHP coding into its core Python Module, weather34.py. If your are currently using W34-HC-IMJD-2.0.0 and you are happy that you have a stable setup, it is not absolutely necessary to upgrade.
 
 To improve efficiency and reliability the web services (forecasts and alerts etc) are now part of the weather34.py module coding and the settings for these have been moved from the template setup page to weewx.conf. This is also true for cloud coverage settings. To assist you we have created a new pre-install settings page at https://steepleian.github.io/weewx-Weather34/. When you have completed the settings form a file 'services.txt' is automatically downloaded to your default Download folder. This file should then be copied to your install folder prior to running the unique installer. When the install process is exectuted, the data contained in services.txt is used to populate weewx.conf
 
