@@ -29,7 +29,7 @@ class w34_installer:
     def find_replace(self, d, k, v, do_overwrite, append = False, delete = False):
         found = k in d
         if found:
-            if do_overwrite:
+            if do_overwrite or v not in d[k]:
                 if delete:
                     del d[k]
                 elif append:
