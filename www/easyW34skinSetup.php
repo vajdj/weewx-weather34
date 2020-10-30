@@ -29,22 +29,15 @@ $_POST["showDate"] = "false";
 IF (ISSET($_POST["Submit"])) {
 
 $string = '<?php
-$apikey = "'. $_POST["apikey"]. '";
-$wuapikey = "'. $_POST["wuapikey"]. '";
 $weatherflowID = "'. $_POST["wfid"]. '";
 $weatherflowoption   = "'. $_POST["weatherflowoption"]. '";
 $weatherflowlightning = "'. $_POST["wfli"]. '";
 $weatherflowmapzoom   = "'. $_POST["weatherflowmapzoom"]. '";
-$id = "'. $_POST["WUID"]. '";
-$purpleairID = "'. $_POST["purpleair"]. '";
 $purpleairhardware   = "'. $_POST["purpleairhardware"]. '";
-$metarapikey ="'. $_POST["metarapikey"]. '";
 $TZ = "'. $_POST["TZ"]. '";
 $UTC = "'. $_POST["UTC"]. '";
 $lon = '. $_POST["lon"]. ';
 $lat = '. $_POST["lat"]. ';
-$darkskyunit   = "'. $_POST["darkskyunit"]. '";
-$wuapiunit   = "'. $_POST["wuapiunit"]. '";
 $stationlocation = "'. $_POST["stationlocation"]. '";
 $stationName = "'. $_POST["stationName"]. '";
 $moonadj = "'. $_POST["moonadj"]. '";
@@ -93,7 +86,6 @@ $twitter   = "'. $_POST["twitter"]. '";
 $theme1   = "'. $_POST["theme1"]. '";
 $since    = "'. $_POST["since"]. '";
 $weatherhardware   = "'.$_POST["weatherhardware"]. '";
-//$mbplatform   = "'.$_POST["mbplatform"]. '";
 $davis   = "'.$_POST["davis"]. '";
 $sunoption = "'. $_POST["sunoption"]. '";
 $hemisphere   = "'. $_POST["hemisphere"]. '";
@@ -132,10 +124,6 @@ $USAWeatherFinder = "'. $_POST["USAWeatherFinder"]. '";
 $extraLinkTitle = "'. $_POST["extraLinkTitle"]. '";
 $extraLinkColor = "'. $_POST["extraLinkColor"]. '";
 $extraLinkURL = "'. $_POST["extraLinkURL"]. '";
-
-$weewxserver_address = "'. $_POST["weewxserver_address"]. '";
-$weewxserver_port = "'. $_POST["weewxserver_port"]. '";
-$json_day_file_transfer = "'. $_POST["json_day_file_transfer"]. '";
 ?>';
 
 $fn = FOPEN('languages/lang.'.$defaultlanguage.'.php', 'r') or die("Cannot read input file ".'languages/lang.'.$defaultlanguage.'.php');
@@ -465,12 +453,6 @@ WeeWX Software Paths to Data files</div><br/>
     <svg id="i-chevron-bottom" viewBox="0 0 32 32" width="10" height="10" fill="#777" stroke="#777" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
     <path d="M30 12 L16 24 2 12" /></svg>
 
-  <input name="jsondatapath" type="text" id="jsondatapath" value="<?php echo $jsondatapath ;?>" class="chooseapi">
-  <br/>
-  <span style='color:red'>Do not change unless you know what you're doing</span>
-  <br/>
-    
-     
      <div class="stationvalue">WeeWX Chart Data</div>
       <svg id="i-chevron-right" viewBox="0 0 32 32" width="14" height="14" fill="none" stroke="rgba(86, 95, 103, 1.000)" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
     <path d="M12 30 L24 16 12 2" />
