@@ -268,16 +268,6 @@
                 <option value="oce">Oceania</option>
             </select>
         </div>
-            </div>
-              <input type="text" id="services" placeholder="Enter services wanted by using first two letters of a service. Place a period (dot) between each service." />
-        </div>
-        </div>
-        <div class="row">
-      <div class="col-25">
-            <label for="text">Meteoalarm Country</label>
-            </div>
-        <div class="col-75">
-
         <div>
             <input type="submit" id="bt" value="Download services.txt" onclick="saveFile()" />
         </div>
@@ -374,7 +364,7 @@
             " 'al_url':'http://"+al_ip.value+'/weewx/weather34/eualert.php?country='+al_country.value+'&region='+al_region.value+"'"+','+ ' \r\n' +
             "   'al_interval':'3600'"+','+ ' \r\n' +
             " 'al_filename':'/var/www/html/weewx/weather34/jsondata/meteoalarm.txt'"+','+ ' \r\n' +
-            "   'services':'"+services.value+"'"+ ' \r\n' +
+            "   'services':'"+txtServices.value+"'"+ ' \r\n' +
             "}'''"+','+ ' \r\n' +
             '"config_entries4"'+":'''="+ ' \r\n' +
             "'Weather34CloudCover' :"+ ' \r\n' +
