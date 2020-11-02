@@ -105,6 +105,7 @@ $notifyEarthquake = "'. $_POST["notifyEarthquake"]. '";
 $notifyMagnitude = '. $_POST["notifyMagnitude"]. ';
 $linkWU = "'. $_POST["linkWU"]. '";
 $linkWUNew = "'. $_POST["linkWUNew"]. '";
+$id = "'. $_POST["id"]. '";
 $linkCWOPID = "'. $_POST["linkCWOPID"]. '";
 $linkFindUID = "'. $_POST["linkFindUID"]. '";
 $linkNOAA = "'. $_POST["linkNOAA"]. '";
@@ -1732,6 +1733,13 @@ General template settings with options to choose which type of module to display
         <option><?php echo ($linkWUNew?$linkWUNew:'yes');?></option>
         <option><?php echo ($linkWUNew=='yes'||empty($linkWUNew)?'no':'yes');?></option>
     </select>
+    <br/>
+  <!-- WU id -->
+  <div class="stationvalue">Weather Underground ID</div>
+    <?php echo $rightchevron;?>
+    <label name="id"></label>
+    <input name="id" type="text" id="id" value="<?php echo $id;?>" class="choose">
+    
     <br/>
     <!-- CWOP Link -->
     <div class="stationvalue">Display CWOP Link</div>
