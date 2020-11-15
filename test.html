@@ -134,7 +134,22 @@
             <input type="text" id="txtDskey" placeholder="Enter your DarkSky Key" />
         </div>
         </div>
-        
+        <div class="row">
+      <div class="col-25">
+            <label for="text">DarkSky Units</label>
+            </div>
+        <div class="col-75">
+
+            <select id="selDsunits">
+                <option selected value="">-- Choose the units --</option>
+                <option value="us">US</option>
+                <option value="si">SI Metric</option>
+                <option value="ca">Canada</option>
+                <option value="uk2">UK (Metric with mph and miles)</option>
+                <option value="auto">auto</option>
+            </select>
+        </div>
+        </div>
         <div class="row">
       <div class="col-25">
             <label for="text">Weather Underground Key</label>
@@ -144,7 +159,18 @@
             <input type="text" id="txtWukey" placeholder="Enter your Weather Underground Key" />
         </div>
         </div>
-        
+        <div class="row">
+      <div class="col-25">
+            <label for="text">Weather Underground Units</label>
+            </div>
+        <div class="col-75">
+
+            <select id="selWuunits">
+                <option selected value="">-- Fixed to SI Units --</option>
+                <option value="s">Fixed to SI Units</option>
+            </select>
+        </div>
+        </div>
         <div class="row">
       <div class="col-25">
             <label for="text">METAR Key</label>
@@ -278,7 +304,9 @@
             '"' + 'continent'+'"' + ':' +"'"  + continent.value +"'," + ' \r\n' +
             '"' + 'aq_apikey'+'"' + ':' +"'"  + aq_apikey.value +"'," + ' \r\n' +
             '"' + 'ds_apikey'+'"' + ':' +"'"  + ds_apikey.value +"'," + ' \r\n' +
+            '"' + 'ds_units'+'"' + ':' +"'"  + ds_units.value +"'," + ' \r\n' +
             '"' + 'wu_apikey'+'"' + ':' +"'"  + wu_apikey.value +"'," + ' \r\n' +
+            '"' + 'wu_units'+'"' + ':' +"'"  + wu_units.value +"'," + ' \r\n' +
             '"' + 'me_apikey'+'"' + ':' +"'"  + me_apikey.value +"'," + ' \r\n' +
             '"' + 'me_code'+'"' + ':' +"'"  + me_code.value +"'," + ' \r\n' +
             '"' + 'pu_id'+'"' + ':' +"'"  + pu_id.value +"'," + ' \r\n' +
@@ -290,8 +318,10 @@
             "'Weather34WebServices' "+':'+ ' \r\n' +
             '"# Air quality, your own latitude, longitude, token and interval in seconds are required\\n"' + ' \r\n' +
             '"# Dark Sky, your own latitude, longitude, API key, language, units and interval in seconds required\\n"' + ' \r\n' +
+            '"# DarkSky Units key us = US Units, ca = METRIC Units, si = METRICWX Units, uk2 = UK(metric with mph) Units\\n"' + ' \r\n' +
             '"# Example https://api.forecast.io/forecast/yourtokenhere/51.94,-0.987?lang=en&units=uk2\\n"' + ' \r\n' +
             '"# Weather Underground, your own latitude, longitude, API key, language, units and interval in seconds required\\n"' + ' \r\n' +
+            '"# Weather Underground Units key e = US, m = METRIC, s = SI(with m/s Scandinavia), h = UK(with mph)\\n"' + ' \r\n' +
             '"# Example https://api.weather.com/v3/wx/forecast/daily/5day?geocode=51.94,-0.987&language=en&format=json&units=h&apiKey=yourapikeyhere\\n"' + ' \r\n' +
             '"# Earthquake reports interval in seconds required\\n"' + ' \r\n' +
             '"# K-Index reports interval in seconds required\\n"' + ' \r\n' +
@@ -309,10 +339,10 @@
             " 'aq_url':'https://api.waqi.info/feed/geo:"+lat.value+';'+lon.value+'/?token='+aq_apikey.value+"'"+','+ ' \r\n' +
             "   'aq_interval':'3600'"+','+ ' \r\n' +
             " 'aq_filename':'/var/www/html/weewx/weather34/jsondata/aqi.txt'"+','+ ' \r\n' +
-            " 'ds_url':'https://api.forecast.io/forecast/"+ds_apikey.value+'/'+lat.value+','+lon.value+'?lang='+lang.value+'&units'+'=si'+"'"+','+ ' \r\n' +
+            " 'ds_url':'https://api.forecast.io/forecast/"+ds_apikey.value+'/'+lat.value+','+lon.value+'?lang='+lang.value+'&units'+'='+ds_units.value+"'"+','+ ' \r\n' +
             "   'ds_interval':'3600'"+','+ ' \r\n' +
             " 'ds_filename':'/var/www/html/weewx/weather34/jsondata/darksky.txt'"+','+ ' \r\n' +
-            " 'wu_url':'https://api.weather.com/v3/wx/forecast/daily/5day?geocode="+lat.value+','+lon.value+'&language='+lang.value+'&format=json&units=s'+'&apiKey='+wu_apikey.value+"'"+','+ ' \r\n' +
+            " 'wu_url':'https://api.weather.com/v3/wx/forecast/daily/5day?geocode="+lat.value+','+lon.value+'&language='+lang.value+'&format=json&units='+wu_units.value+'&apiKey='+wu_apikey.value+"'"+','+ ' \r\n' +
             "   'wu_interval':'3600'"+','+ ' \r\n' +
             " 'wu_filename':'/var/www/html/weewx/weather34/jsondata/wuforecast.txt'"+','+ ' \r\n' +
             " 'eq_url':'https://earthquake-report.com/feeds/recent-eq?json'"+','+ ' \r\n' +
