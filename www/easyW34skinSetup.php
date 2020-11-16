@@ -125,6 +125,8 @@ $USAWeatherFinder = "'. $_POST["USAWeatherFinder"]. '";
 $extraLinkTitle = "'. $_POST["extraLinkTitle"]. '";
 $extraLinkColor = "'. $_POST["extraLinkColor"]. '";
 $extraLinkURL = "'. $_POST["extraLinkURL"]. '";
+$wuapiunit = "'. $_POST["wuapiunit"]. '";
+$darkskyunit = "'. $_POST["darkskyunit"]. '";
 ?>';
 
 $fn = FOPEN('languages/lang.'.$defaultlanguage.'.php', 'r') or die("Cannot read input file ".'languages/lang.'.$defaultlanguage.'.php');
@@ -207,7 +209,7 @@ if (isset($_POST['submit_pwd'])){    $pass = isset($_POST['passwd']) ? $_POST['p
   
 
 
-  <input type="hidden" name="ds_url" value="https://api.forecast.io/forecast/$apikey/$lat,$lon?lang=$language&units=$darkskyunit"/><br/>
+  
   
  
          
@@ -1195,6 +1197,7 @@ General template settings with options to choose which type of module to display
             <option>rainfallf-year-month.php</option>
             <option>windgustyear.php</option>
             <option>temperatureyear.php</option>
+            <option>wx34lightningsmall.php</option>
             <option>wflightning.php</option>
             <option>daqitop.php</option>
             <option>worldaqitop.php</option>
@@ -1226,6 +1229,7 @@ General template settings with options to choose which type of module to display
             <option>windgustyear.php</option>
             <option>temperatureyear.php</option>
             <option>wflightning.php</option>
+            <option>wx34lightningsmall.php</option>
             <option>daqitop.php</option>
             <option>worldaqitop.php</option>
             </select>
@@ -1399,12 +1403,12 @@ General template settings with options to choose which type of module to display
 
 
      <span style="color:#777;"><?php echo $iicon;?><span style="color:#777;"> temperatureyear.php</span> *English only<span style="color:rgba(24, 25, 27, 0.8)"> Current Monthly / Yearly Temperature </span>  <br/>
+     <span style="color:#777;"><?php echo $iicon;?><span style="color:#777;"> wx34lightningsmall.php</span> *English only<span style="color:rgba(24, 25, 27, 0.8)"> Daily Lightning Strikes </span> <br/>
 
      <span style="color:#777;"><?php echo $iicon;?><span style="color:#777;"> davisconsoleoutlook.php <span style="color:rgba(24, 25, 27, 0.8)">Davis Hardware Console users only</span> <br/></span>
 
 
-     <span style="color:#777;"><?php echo $iicon;?><span style="color:#777;"> wflightning.php <span style="color:rgba(24, 25, 27, 0.8)">Weatherflow users only uses direct weatherflow API not meteobridge data must add station ID below in the weatherflow section </span> <br/></span>
-
+     <span style="color:#777;"><?php echo $iicon;?><span style="color:#777;"> wflightning.php <span style="color:rgba(24, 25, 27, 0.8)">Weatherflow users only uses direct weatherflow API not WeeWX database. Must add station ID below in the weatherflow section </span> <br/></span>
 
 
       <br/></span></span>
@@ -2103,7 +2107,8 @@ Weatherflow Map Zoom</div>
 </div>
 <br/>
   
-
+  <input type="hidden" name="wuapiunit" value="s"/><br/>
+  <input type="hidden" name="darkskyunit" value="si"/><br/>
   
  
   
