@@ -1,20 +1,16 @@
 <?php
-$apikey = 'Now set in weewx.conf';
-$wuapikey = 'Now set in weewx.conf';
 $weatherflowID = '';
 $weatherflowoption = 'no';
 $weatherflowlightning = '';
 $weatherflowmapzoom = '';
 $id = 'IYOURWUKWY';
-$purpleairID = 'Now set in weewx.conf';
 $purpleairhardware = 'yes';
-$metarapikey = 'Now set in weewx.conf';
 $TZ = 'Europe/London';
 $UTC = '1';
 $lon = -0.00;
 $lat = 50.00;
-$darkskyunit = 'Now set in weewx.conf';
-$wuapiunit = 'Now set in weewx.conf';
+$darkskyunit = 'uk2';
+$wuapiunit = 'h';
 $stationlocation = 'Somewhere In The World';
 $stationName = 'Demo Station';
 $moonadj = '';
