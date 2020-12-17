@@ -537,8 +537,7 @@ class CloudCover():
                         ypos2 = 152
                         min = 100
                         max = 250
-                    im = im.convert('L')
-                    pix = im.load()
+                    pix = im.convert('L').load()
                     for y in range(ypos1,ypos2):
                         for x in range(xpos1,xpos2):
                             pixarray.append(pix[x,y])
@@ -552,6 +551,8 @@ class CloudCover():
                 time.sleep(time_interval)
         except Exception as e:
             logdbg("CloudCover:calculate_cloud_cover " + str(e))
+            if im != None:
+                im.close()
                
 class Webserver():
     def __init__(self, config_dict, webserver_addresses):
