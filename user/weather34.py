@@ -798,7 +798,7 @@ class Weather34RealTime(StdService):
                     loginf("Cache values not use since they are past the sell by date")	
             except Exception as e:
                 logerr(str(e))	
-        event.originalPacket = event.packet
+        #event.originalPacket = event.packet
         if self.cache_debug:
             logdbg("Event packet before: %s" % (event.packet,))
         # replace the values in the retained packet if they have a value other than None or the field is listed in excludeFields
